@@ -24,17 +24,21 @@ const TicTacToe = () => {
            return; 
         }
         else{
-            if(count%2==0){
+            if(count%2==0&&arr[num]===""){
                 (e.target as HTMLDivElement).innerHTML  = `<img src=${cross_img}>`
                 setCount(prevCount=>prevCount+1)
                 arr[num] = "x"
                 checkWin(cross_img)
             }
-            else{
+            else if(count%2!=0&&arr[num]==="")
+            {
                 (e.target as HTMLDivElement).innerHTML  = `<img src=${circle_img}>`
                 setCount(prevCount=>prevCount+1)
                 arr[num] = "o"
                 checkWin(circle_img) 
+            }
+            else{
+                return;
             }
         }
     }
@@ -45,19 +49,20 @@ const TicTacToe = () => {
                 winner(text)
             }
         }
-        for(let i=0; i<arr.length; i++){
-            if(arr[i]===arr[i+3]&&arr[i+3]===arr[i+6]&&arr[i+6]!==""){
-                winner(text)
+        for (let i = 0; i < 3; i++) {
+            if (arr[i] === arr[i + 3] && arr[i + 3] === arr[i + 6] && arr[i + 6] !== "") {
+                winner(text);
             }
         }
-        for(let i=0; i<arr.length; i+=2){
-            if(arr[i]===arr[i+4]&&arr[i+4]===arr[i+8]&&arr[i+8]!==""){
-                winner(text)
-            }
-        }         
-    }
+        if(arr[0]===arr[4]&&arr[4]===arr[8]&&arr[8]!==""){
+            winner(text)
+        }
+        if(arr[2]===arr[4]&&arr[4]===arr[6]&&arr[6]!==""){
+            winner(text)
+        }  
+    } 
     const winner = (text:string)=>{
-        changeTextRef.current.innerHTML = `CONGRATULATIONS <img src=${text}> WINS`
+        changeTextRef.current.innerHTML = `CONGRATULATIONS: <img src=${text}> WINS`
         setLock(true)
     }
 
@@ -70,7 +75,7 @@ const TicTacToe = () => {
         arr = ["","","","","","","","",""]
         setLock(false)
         setCount(0)
-        changeTextRef.current.innerHTML = `<h1>TIC TAC TOE <span>REACT</span></h1>`
+        changeTextRef.current.innerHTML = `<h1 className="title">TIC TAC TOE <span> REACT</span></h1>`
     }
 
   return (

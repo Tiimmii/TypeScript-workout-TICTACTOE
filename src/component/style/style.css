@@ -1,6 +1,10 @@
 /* General styles */
 .title {
     color: #fff;
+    font-size: 30px;
+ }
+ .title h1{
+    font-size: 30px;
  }
  .title span {
     color: #26ffcb;
@@ -46,8 +50,8 @@
     height: 45px;
  }
  .title img{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
  }
  
  /* Responsive Design */
