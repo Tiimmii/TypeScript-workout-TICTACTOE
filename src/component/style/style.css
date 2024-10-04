@@ -28,6 +28,9 @@
     margin: 5px 5px;
     transition: all 0.3s ease;
     border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .reset{
     background: #1f3540;
@@ -37,6 +40,10 @@
     border-radius: 10px;
     cursor: pointer;
     border: none;
+ }
+ .box img{
+    width: 45px;
+    height: 45px;
  }
  
  /* Responsive Design */
