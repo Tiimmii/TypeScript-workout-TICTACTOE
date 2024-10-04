@@ -5,10 +5,19 @@ import circle_img from '../assets/circle.png'
 
 var arr = ["","","","","","","","",""]
 const TicTacToe = () => {
-    const [count, setCount] = useState(0)
-    const [lock, setLock] = useState(false)
-    const changeTextRef = useRef<HTMLDivElement>(null!)
-    const resetRef = useRef<HTMLDivElement>(null!)
+    const [count, setCount] = useState(0);
+    const [lock, setLock] = useState(false);
+    const changeTextRef = useRef<HTMLDivElement>(null!);
+    const box1 = useRef<HTMLDivElement>(null!);
+    const box2 = useRef<HTMLDivElement>(null!);
+    const box3 = useRef<HTMLDivElement>(null!);
+    const box4 = useRef<HTMLDivElement>(null!);
+    const box5 = useRef<HTMLDivElement>(null!);
+    const box6 = useRef<HTMLDivElement>(null!);
+    const box7 = useRef<HTMLDivElement>(null!);
+    const box8 = useRef<HTMLDivElement>(null!);
+    const box9 = useRef<HTMLDivElement>(null!);
+    const boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
 
     const setBox = (e:React.MouseEvent<HTMLDivElement>, num:number)=>{
         if(lock){
@@ -53,15 +62,20 @@ const TicTacToe = () => {
     }
 
     const reset = ()=>{
-        resetRef.current.innerHTML = ""
+       boxes.forEach(box=>{
+            if(box){
+                box.current.innerHTML = "";
+            }
+        })
         arr = ["","","","","","","","",""]
         setLock(false)
         setCount(0)
+        changeTextRef.current.innerHTML = `<h1>TIC TAC TOE <span>REACT</span></h1>`
     }
 
   return (
     <div>
-      <Component setBox = {setBox} changeTitle={changeTextRef} reset={reset} resetTitle={resetRef}/>
+      <Component setBox = {setBox} changeTitle={changeTextRef} reset={reset} resetBoxes={boxes}/>
     </div>
   )
 }
